@@ -19,4 +19,19 @@ splitted_courses.forEach(element => {
     });
     acronyms.push(acro);
 });
+
+
 console.log(acronyms);
+
+function compare_len(a, b){
+    return a.length - b.length;
+}
+acronyms.sort(compare_len)
+
+console.log(acronyms)
+
+const compare_len2 = (a,b) => {return a.length-b.length};
+const compare_len3 = (a,b) =>  a.length-b.length;
+
+setTimeout(console.log(1, new Date()), 2000)
+setTimeout(()=>{console.log(1, new Date())}, 2000)
