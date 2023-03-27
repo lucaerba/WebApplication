@@ -1,0 +1,129 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="mine.css">
+</head>
+<body onload="return printFilms()">
+
+    <script>
+        function printFilms(){
+            const films = [
+                        {
+                        Id: 1, 
+                        Title: "Pulp Fiction", 
+                        Favorite: true, 
+                        Watchdate: "March 10, 2023", 
+                        Score: 5 
+                        },{
+                        Id: 2, 
+                        Title: "21 Grams", 
+                        Favorite: true, 
+                        Watchdate: "March 17, 2023", 
+                        Score: 4  
+                        },{
+                        Id: 3, 
+                        Title: "Star Wars", 
+                        Favorite: false, 
+                        Watchdate: "not defined", 
+                        Score: "not assigned"  
+                        },{
+                        Id: 4, 
+                        Title: "Matrix", 
+                        Favorite: false, 
+                        Watchdate: "not defined", 
+                        Score: "not assigned" 
+                        },{
+                        Id: 5, 
+                        Title: "Shrek", 
+                        Favorite: false, 
+                        Watchdate: "March 21, 2023", 
+                        Score: 3 
+                        }
+                    ]
+                    
+            var row = ""
+            films.forEach(f=>{
+                row += "<tr>"
+                row += "<td>"+f.Title+"</td>"
+                row += '<td><div class="form-check"><input class="form-check-input" type="checkbox" '
+                row += f.Favorite?"checked":""
+                row += ' aria-label="" value="Favorite" id="favorite"><label class="form-check-label" for="favorite">favorite</label></div></td>'
+                row += "<td>"+f.Watchdate+"</td>"
+                row += "<td>"+f.Score+"</td>"
+                row += "</tr>"
+            })
+            document.getElementById("innerTableValues").innerHTML = row;
+        }
+    </script>
+
+
+
+    <nav class="navbar navbar-light bg-dark  navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-camera-reels white"> Film Library</i>
+            </a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">         
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success bg-light" type="submit">Search</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">    
+                        <i class="bi bi-person-check-fill white md"></i>
+                    </li>
+                </ul>
+            
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4 center">
+                <div class="form-check " >
+                    <input class="form-check-input" type="checkbox" aria-label="" value="All" id="fall" onclick="return printFilms()"  checked>
+                    <label class="form-check-label" for="fall">All</label>
+                </div>
+                <div class="form-check">       
+                    <input class="form-check-input" type="checkbox" aria-label="" value="Favorite" id="ffav" onclick="return printFilms()">
+                    <label class="form-check-label" for="ffav">Favorite</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" aria-label="" value="prova" id="fbest" onclick="return printFilms()">
+                    <label class="form-check-label" for="fbest">Best rated</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" aria-label="" value="Favorite" id="fseen" onclick="return printFilms()">
+                    <label class="form-check-label" for="fseen">Seen last month</label>
+                </div>
+                <div class="form-check">  
+                    <input class="form-check-input" type="checkbox" aria-label="" value="prova" id="funseen" onclick="return printFilms()">
+                    <label class="form-check-label" for="funseen">Unseen</label>
+                </div>
+            </div>
+            <div class="col-8">
+                <h1>Filter</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Fav</th>
+                            <th>Whatch Date</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="innerTableValues">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
